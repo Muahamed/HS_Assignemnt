@@ -14,6 +14,6 @@ RUN mvn package
 # Step : Package image
 FROM openjdk:8-jre-alpine as APP
 EXPOSE 8080
-COPY --from=BUILD /build/target/docker-2-helm.jar app.jar
+COPY --from=BUILD /build/target/hunger-2-helm.jar app.jar
 #To reduce Tomcat startup time we added a system property pointing to "/dev/urandom" as a source of entropy.
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
