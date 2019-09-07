@@ -111,6 +111,7 @@ Within the repo under the scripts folder, i have created install scripts for thi
 
 I took a copy of the values.yml from the above mentioned repo. and customised it so that I could set the values for: postgresqlUsername, postgresqlPassword and postgresqlDatabase as well as the initdbScripts
 
+```yaml
 initdbScripts:
   db-init.sql: |
     create sequence hibernate_sequence start with 1 increment by 1;
@@ -120,7 +121,7 @@ initdbScripts:
     insert into greeting(id,say) values(3,'Howdy! Hunger Station ');
     insert into greeting(id,say) values(4,'Howdy, Hunger Station ');
 
-
+```
 We want to mount our own config to the Spring Boot container. To do this we need to change the deployment.yaml to include a mounted volume for our config. First create a configuration.yaml file in the templates folder with the following::
 
 apiVersion: v1
