@@ -105,6 +105,21 @@ Prerequisite:
 - nginx-controller 
 
 
+#Mandatory :
+#Nginx Ingress Controller 
+NGINX Ingress controller can be installed via Helm using the chart stable/nginx-ingress from the official charts repository. To install the chart with the release name my-nginx:
+
+helm install stable/nginx-ingress --name my-nginx
+If the kubernetes cluster has RBAC enabled, then run:
+
+helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
+Detect installed version:
+
+POD_NAME=$(kubectl get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].metadata.name}')
+kubectl exec -it $POD_NAME -- /nginx-ingress-controller --version
+
+
+
 We want to get a postgres DB running in our k8s cluster. Helm already has a postgres chart that we can use.. and setup to our own needs by overriding settings applicable to us. The repo for Helm Stable charts is at: https://github.com/helm/charts/tree/master/stable/postgresql
 
 Within the repo under the scripts folder, i have created install scripts for this helm chart. Basically what they are doing is:
@@ -165,5 +180,47 @@ helm dependency update ./helm/docker-2-helm-full/
 
 Then we can install the chart using 
 helm install --name docker-2-helm ./helm/docker-2-helm-full/
+
+
+# Script to Bringup The app using docker-compose 
+Script Name : hunger_docker_compose.sh
+
+Steps for building and running the application using docker-compose
+
+To Install the pre-requisites 
+$ ./hunger_docker_compose.sh
+
+To Build the application
+$ ./hunger_docker_compose.sh hunger build 
+
+to Run the application
+$ ./hunger_docker_compose.sh hunger up
+
+
+To bring down the application 
+$./hunger_docker_compose.sh hunger down 
+
+
+# Script to Bringup the environment in kubernetes cluster using Custom Helm chart
+
+Script name : hunger_helm_launch.sh
+
+To install pre-requisites 
+
+$ ./hunger_helm_launch.sh
+
+to bring up the application
+
+$ ./hunger_helm_launch.sh hunger up
+
+to bring down the application
+
+$ ./hunger_helm_launch.sh hunger down
+
+
+
+
+
+
 
 
