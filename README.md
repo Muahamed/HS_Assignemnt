@@ -109,9 +109,13 @@ We want to get a postgres DB running in our k8s cluster. Helm already has a post
 
 Within the repo under the scripts folder, i have created install scripts for this helm chart. Basically what they are doing is:
 
-I took a copy of the values.yml from the above mentioned repo. and customised it so that I could set the values for: postgresqlUsername, postgresqlPassword and postgresqlDatabase as well as the initdbScripts
+- took a copy of the values.yml from the above mentioned repo. and customised it so that I could set the values for: postgresqlUsername, postgresqlPassword and postgresqlDatabase as well as the initdbScripts
 
 ```yaml
+postgresql:
+  postgresqlUsername: postgresHelm
+  postgresqlPassword: postgresHelm
+  postgresqlDatabase: postgresHelmDB
 initdbScripts:
   db-init.sql: |
     create sequence hibernate_sequence start with 1 increment by 1;
