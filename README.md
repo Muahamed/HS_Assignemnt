@@ -25,7 +25,7 @@ Run Using java -jar target/hunger-2-helm.jar or ./mvnw spring-boot:run
 
 
 
-02-Containerise It
+# 02-Containerise It
 
 
 Prerequisites:
@@ -36,7 +36,7 @@ Build Docker image and Run it
 Build the Docker image docker build -t hunger/docker2helm:latest .
 which will make it available in your local Docker registry.
 
-03-Running our app with linked DB (using Docker Compose)
+# 03-Running our app with linked DB (using Docker Compose)
 
 
 Prerequisites
@@ -95,7 +95,7 @@ i.e: docker build -t hunger/docker2helm:latest .
 
 
 
-04-k8s & helm
+# 04-k8s & helm
 
 Prerequisite:
 - k8
