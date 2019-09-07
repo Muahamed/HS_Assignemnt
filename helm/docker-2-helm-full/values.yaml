@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: melissapalmer/docker2helm
+  repository: hunger/docker2helm
   tag: latest
   pullPolicy: IfNotPresent
 
