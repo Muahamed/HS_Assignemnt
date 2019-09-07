@@ -27,14 +27,22 @@ spec:
             - name: http
               containerPort: 8080
               protocol: TCP
-#          livenessProbe:
-#            httpGet:
-#              path: /
-#              port: http
-#          readinessProbe:
-#            httpGet:
-#              path: /
-#              port: http
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              initialDelaySeconds: 40
+              timeoutSeconds: 2
+              periodSeconds: 3
+              failureThreshold: 2
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+              initialDelaySeconds: 40
+              timeoutSeconds: 2
+              periodSeconds: 3
+              failureThreshold: 2
           volumeMounts:
           - name: configuration-volume
             # Note: 'app.jar' currently resides within the root folder.
