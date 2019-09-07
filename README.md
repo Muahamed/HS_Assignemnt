@@ -122,8 +122,11 @@ initdbScripts:
     insert into greeting(id,say) values(4,'Howdy, Hunger Station ');
 
 ```
-We want to mount our own config to the Spring Boot container. To do this we need to change the deployment.yaml to include a mounted volume for our config. First create a configuration.yaml file in the templates folder with the following::
 
+
+We want to mount our own config to the Spring Boot container. To do this we need to change the deployment.yaml to include a mounted volume for our config. First create a configuration.yaml(configmap) file in the templates folder with the following::
+
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -145,6 +148,8 @@ data:
         show-sql: {{ .Values.configuration.spring.jpa.showsql }}
         generate-ddl: {{ .Values.configuration.spring.jpa.generateddl }}
         hibernate.ddl-auto: {{ .Values.configuration.spring.jpa.hibernateddlauto }}
+        
+   ```
         
 This creates a ConfigMap for k8s, and pushes in our application.yml that will later be used by our Spring Boot application. See the .Values.configuration.spring.datasource.url is matching the values.yaml where we added our Spring related settings.
 
