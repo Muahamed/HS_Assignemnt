@@ -6,8 +6,8 @@ COPY pom.xml .
 # mvn <maven-plugin-name>:help caches maven specific dependencies to image
 # mvn dependency:go-offline caches build depencencies to image
 RUN mvn clean
-RUN mvn compiler:help jar:help resources:help surefire:help clean:help install:help deploy:help site:help dependency:help javadoc:help spring-boot:help
-RUN mvn dependency:go-offline
+#RUN mvn compiler:help jar:help resources:help surefire:help clean:help install:help deploy:help site:help dependency:help javadoc:help spring-boot:help
+#RUN mvn dependency:go-offline
 COPY src/ /build/src/
 RUN mvn package
 

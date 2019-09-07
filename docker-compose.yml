@@ -29,7 +29,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: melissapalmer/docker2helm
+    image: hunger/docker2helm
     volumes:
     - ./application-container.yml:/config/application.yml
     restart: always
