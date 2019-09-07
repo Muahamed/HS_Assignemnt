@@ -11,7 +11,7 @@ Helm is a package manager for K8s, it simplifies the installation of an applicat
 
 
 
-01-Creating a Spring Boot Rest API
+# 01-Creating a Spring Boot Rest API
 
 This application includes:
 
