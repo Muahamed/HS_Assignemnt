@@ -187,26 +187,26 @@ helm install --name docker-2-helm ./helm/docker-2-helm-full/
 
 
 # Script to Bringup The app using docker-compose 
-Script Name : hunger_docker_compose.sh
+### Script Name : hunger_docker_compose.sh
 
 Steps for building and running the application using docker-compose
 
-To Install the pre-requisites 
+### To Install the pre-requisites 
 
 $ ./hunger_docker_compose.sh
 
-To Build the application
+### To Build the application
 
 $ ./hunger_docker_compose.sh hunger build 
 
 
 
-to Run the application
+### to Run the application
 
 $ ./hunger_docker_compose.sh hunger up
 
 
-To bring down the application 
+### To bring down the application 
 $./hunger_docker_compose.sh hunger down 
 
 
