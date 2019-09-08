@@ -585,3 +585,13 @@ root@ip-172-31-12-83:~/new/curl http://hunger-2-helm.local/hello
 
 ```
 
+### Known Issues and Fixes 
+
+There were a couple issues with the Helm Chart initdbScripts field ,if application container keep on crashing due to missing greetins field , then we need to re-run the initdbScripts located at /docker-entrypoint-initdb.d/db-init.sql inside postgresql container
+
+``` go
+$psql -U postgresHelm -d postgresHelmDB -a -f /docker-entrypoint-initdb.d/db-init.sql
+
+```
+
+
