@@ -33,17 +33,22 @@ Prerequisites:
 
 Build Docker image and Run it
 
-Build the Docker image docker build -t hunger/docker2helm:latest .
+Build the Docker image 
+docker build -t hunger/docker2helm:latest .
 which will make it available in your local Docker registry.
 
 # 03-Running our app with linked DB (using Docker Compose)
 
 
 Prerequisites
+
 Docker Compose: 1.17.1
 
 Docker
+
 Created a docker-compose.yml as below:
+
+``` yaml
 
 version: '3.1'
 
@@ -84,20 +89,27 @@ services:
     depends_on:
       - db
 
-
+```
 
 
 Run our app and the Postgresql container
 
-sudo  docker-compose up  or sudo docker-compose -f docker-compose.yml up  or
+sudo  docker-compose up  
+
+or 
+
+sudo docker-compose -f docker-compose.yml up
+
 make sure you have build your own image before running the above 
+
 i.e: docker build -t hunger/docker2helm:latest .
 
 
 
 # 04-k8s & helm
 
-Prerequisite:
+### Prerequisite:
+
 - k8
 - docker
 - helm
@@ -105,14 +117,20 @@ Prerequisite:
 - nginx-controller 
 
 
-#Mandatory :
-#Nginx Ingress Controller 
-NGINX Ingress controller can be installed via Helm using the chart stable/nginx-ingress from the official charts repository. To install the chart with the release name my-nginx:
+### Mandatory :
+
+### Nginx Ingress Controller
+
+NGINX Ingress controller can be installed via Helm using the chart stable/nginx-ingress from the official charts repository. 
+
+To install the chart with the release name my-nginx:
 
 helm install stable/nginx-ingress --name my-nginx
+
 If the kubernetes cluster has RBAC enabled, then run:
 
 helm install stable/nginx-ingress --name my-nginx --set rbac.create=true
+
 Detect installed version:
 
 POD_NAME=$(kubectl get pods -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].metadata.name}')
