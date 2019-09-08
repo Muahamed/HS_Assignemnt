@@ -70,7 +70,7 @@ postgresql:
     db-init.sql: |
       create sequence hibernate_sequence start with 1 increment by 1;
       create table greeting (id bigint not null, say varchar(255), primary key (id));
-      insert into greeting(id,say) values(1,'Hello from parent Helm PG');
-      insert into greeting(id,say) values(2,'Hi from parent Helm PG');
-      insert into greeting(id,say) values(3,'Howdy! from parent Helm PG');
-      insert into greeting(id,say) values(4,'Howdy, Howdy! from parent Helm PG');
+      insert into greeting(id,say) values(1,'Hello Hunger Station ,What's new in Menu Today');
+      insert into greeting(id,say) values(2,'Hi Hunger Station, I'm Hungry');
+      insert into greeting(id,say) values(3,'Howdy!Hunger Station  from parent Helm PG');
+      insert into greeting(id,say) values(4,'Howdy, Howdy!Hunger  from parent Helm PG');
