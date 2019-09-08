@@ -587,7 +587,7 @@ root@ip-172-31-12-83:~/new/curl http://hunger-2-helm.local/hello
 
 ### Known Issues and Fixes 
 
-There were a couple issues with the Helm Chart initdbScripts field ,if application container keep on crashing due to missing greetins field , then we need to re-run the initdbScripts located at /docker-entrypoint-initdb.d/db-init.sql inside postgresql container
+There were a couple issues with the Helm Chart initdbScripts field ,if application container keep on crashing due to missing greetins table , then we need to re-run the initdbScripts located at /docker-entrypoint-initdb.d/db-init.sql inside postgresql container
 
 ``` go
 $psql -U postgresHelm -d postgresHelmDB -a -f /docker-entrypoint-initdb.d/db-init.sql
@@ -597,6 +597,21 @@ $psql -U postgresHelm -d postgresHelmDB -a -f /docker-entrypoint-initdb.d/db-ini
 ### Exception at container launch :
 
 ``` go
+
+2019-09-06 03:02:02.166  INFO 1 --- [           main] org.hibernate.type.BasicTypeRegistry     : HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@4f25b795
+2019-09-06 03:02:02.991  WARN 1 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [greeting]
+2019-09-06 03:02:02.992  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2019-09-06 03:02:03.005  INFO 1 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-09-06 03:02:03.007  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2019-09-06 03:02:03.033  INFO 1 --- [           main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-09-06 03:02:03.035 ERROR 1 --- [           main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [greeting]
+
+
+
 
 Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing table [greeting]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.1.3.RELEASE.jar!/:5.1.3.RELEASE]
