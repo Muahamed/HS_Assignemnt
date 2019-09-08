@@ -212,17 +212,17 @@ $./hunger_docker_compose.sh hunger down
 
 # Script to Bringup the environment in kubernetes cluster using Custom Helm chart
 
-Script name : hunger_helm_launch.sh
+### Script name : hunger_helm_launch.sh
 
-To install pre-requisites 
+### To install pre-requisites 
 
 $ ./hunger_helm_launch.sh
 
-to bring up the application
+### to bring up the application
 
 $ ./hunger_helm_launch.sh hunger up
 
-to bring down the application
+### to bring down the application
 
 $ ./hunger_helm_launch.sh hunger down
 
@@ -550,6 +550,20 @@ ea62b76cdda0        119701e77cbc                                                
 483e16ed4150        k8s.gcr.io/pause:3.1                                             "/pause"                 3 days ago           Exited (255) 2 days ago                                                                              k8s_POD_kube-scheduler-minikube_kube-system_abfcb4f52e957b11256c1f6841d49700_0
 b195f168bc5b        k8s.gcr.io/pause:3.1                                             "/pause"                 3 days ago           Exited (255) 2 days ago                                                                              k8s_POD_kube-controller-manager-minikube_kube-system_5c39844f0b908333a05ae0c6cec35511_0
 d8d607d0eae6        k8s.gcr.io/pause:3.1                                             "/pause"                 3 days ago           Exited (255) 2 days ago                                                                              k8s_POD_kube-addon-manager-minikube_kube-system_65a31d2b812b11a2035f37c8a742e46f_0
+
+```
+
+ ### Application Working Status Check 
+``` go
+###Health EndPoint:
+
+root@ip-172-31-12-83:~/new/HS_Assignemnt# curl http://hunger-2-helm.local/actuator/health
+{"status":"UP"}
+
+###DB query EndPoint
+
+root@ip-172-31-12-83:~/new/curl http://hunger-2-helm.local/hello
+{"say":"Hi Hunger Station ,I'm hungry on IP: 172.17.0.5"}
 
 ```
 
